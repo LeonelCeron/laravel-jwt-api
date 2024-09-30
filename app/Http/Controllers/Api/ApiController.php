@@ -27,5 +27,8 @@ class ApiController extends Controller
 
     }
     
+    //Logout API (GET)
+    public function logout(){
 
+    }
 }
