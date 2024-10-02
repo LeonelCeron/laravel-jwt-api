@@ -28,6 +28,6 @@ Route::group([
     "middleware" => ["auth:api"]
 ], function(){
     Route::get("profile", [ApiController::class, "profile"]);
-    Route::get("refresh", [ApiController::class, "refrehToken"]);
+    Route::get("refresh", [ApiController::class, "refreshToken"]);
     Route::get("logout", [ApiController::class, "logout"]);
 });

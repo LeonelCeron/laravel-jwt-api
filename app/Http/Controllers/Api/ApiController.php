@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Tymon\JWTAuth\Contracts\Providers\JWT;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ApiController extends Controller
@@ -66,7 +67,7 @@ class ApiController extends Controller
     //Profile API (GET)
     public function profile(){
         $userData = auth()->user();
-
+        //Response
         return response()->json([
             "status" => true,
             "message" => "Profile Data",
@@ -75,8 +76,17 @@ class ApiController extends Controller
     }
 
     //Refreh Token API (GET)
-    public function refrehToken(){
+    public function refreshToken(){
+        $newToken = auth()->refresh();
+        //$newToken = JWTAuth::refresh();
+        //$newToken = JWTAuth::setToken(JWTAuth::refresh());
 
+
+        return response()->json([
+            "status" => true,
+            "message" => "New Acces Token Authenticated",
+            "token" => $newToken
+        ]);
     }
     
     //Logout API (GET)
