@@ -92,5 +92,11 @@ class ApiController extends Controller
     //Logout API (GET)
     public function logout(){
 
+        auth()->logout();
+        //Response
+        return response()->json([
+            "status" => true,
+            "message" => "User Logged out Successfully"
+        ]);
     }
 }
