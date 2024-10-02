@@ -65,7 +65,13 @@ class ApiController extends Controller
 
     //Profile API (GET)
     public function profile(){
+        $userData = auth()->user();
 
+        return response()->json([
+            "status" => true,
+            "message" => "Profile Data",
+            "user" => $userData
+        ]); 
     }
 
     //Refreh Token API (GET)
